@@ -5,6 +5,8 @@ using UnityLibrary;
 
 public class Player : MonoBehaviour
 {
+    public int speed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,7 @@ public class Player : MonoBehaviour
     {
         float throttle = Input.GetAxisRaw(InputAxisNames.Throttle);
 
-        GetComponent<Rigidbody2D>().velocity = new Vector2(100 * throttle, 0);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(speed * throttle, 0);
 
         float verticalAxis = Input.GetAxisRaw(InputAxisNames.Vertical);
 
