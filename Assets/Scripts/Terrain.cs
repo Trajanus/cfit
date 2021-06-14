@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEditor.Experimental.GraphView;
 
 public class Terrain : MonoBehaviour
 {
@@ -59,8 +60,8 @@ public class Terrain : MonoBehaviour
         }
         points = new List<Vector2>();
 
-        float xStep = 1.0f;
-        for (float x = 0.0f; x < 100.0f; x += xStep)
+        float xStep = 10.0f;
+        for (float x = 0.0f; x < 1000.0f; x += xStep)
         {
             float yValue = (float)Math.Sin(x * 2);
             points.Add(new Vector2(x, yValue));
