@@ -7,6 +7,7 @@ using UnityLibrary;
 public class Player : MonoBehaviour
 {
     public int speed;
+    public Sprite explosion;
 
     private Rigidbody2D rb2d;
 
@@ -53,5 +54,11 @@ public class Player : MonoBehaviour
         accelerationVector.y = (accelerationVector.y * acceleration) - (rb2d.velocity.y * 2);
 
         rb2d.AddForce(accelerationVector);
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        SpriteRenderer playerRender = GetComponent<SpriteRenderer>();
+        playerRender.sprite = explosion;
     }
 }
