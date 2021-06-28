@@ -12,6 +12,11 @@ public class Terrain : MonoBehaviour
     protected bool addCollider = false;
     [SerializeField]
     protected EdgeCollider2D edgeCollider2D;
+    [SerializeField]
+    protected float Amplitude;
+    [SerializeField]
+    protected float Frequency;
+
 
     protected List<Vector2> points;
 
@@ -60,10 +65,9 @@ public class Terrain : MonoBehaviour
         }
         points = new List<Vector2>();
 
-        float xStep = 10.0f;
-        for (float x = 0.0f; x < 1000.0f; x += xStep)
+        for (float x = 0.0f; x < 3000.0f; x += Frequency)
         {
-            float yValue = (float)Math.Sin(x * 2);
+            float yValue = (float)Math.Sin(x * 2) * Amplitude;
             points.Add(new Vector2(x, yValue));
         }
 
@@ -100,8 +104,8 @@ public class Terrain : MonoBehaviour
         lineRenderer.material = new Material(Shader.Find("Standard"));
         lineRenderer.startColor = Color.white;
         lineRenderer.endColor = Color.white;
-        lineRenderer.startWidth = 0.2f;
-        lineRenderer.endWidth = 0.2f;
+        lineRenderer.startWidth = 1.0f;
+        lineRenderer.endWidth = 1.0f;
         lineRenderer.useWorldSpace = true;
     }
 

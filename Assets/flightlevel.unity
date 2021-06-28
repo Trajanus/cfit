@@ -297,6 +297,8 @@ MonoBehaviour:
   lineRenderer: {fileID: 0}
   addCollider: 1
   edgeCollider2D: {fileID: 0}
+  Amplitude: 10
+  Frequency: 100
 --- !u!114 &1464338629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,7 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothness: 6
-  targetObject: {fileID: 1017208803}
+  targetObject: {fileID: 1017208800}
 --- !u!81 &1589830999
 AudioListener:
   m_ObjectHideFlags: 0
@@ -391,7 +393,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
