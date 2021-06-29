@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    protected Player player;
+    public Player Player => player;
+
     public static GameManager instance = null;
 
     void Awake()
