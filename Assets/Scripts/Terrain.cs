@@ -104,8 +104,8 @@ public class Terrain : MonoBehaviour
         lineRenderer.material = new Material(Shader.Find("Standard"));
         lineRenderer.startColor = Color.white;
         lineRenderer.endColor = Color.white;
-        lineRenderer.startWidth = 1.0f;
-        lineRenderer.endWidth = 1.0f;
+        lineRenderer.startWidth = 2.0f;
+        lineRenderer.endWidth = 2.0f;
         lineRenderer.useWorldSpace = true;
     }
 

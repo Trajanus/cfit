@@ -10,31 +10,35 @@ namespace Assets.Scripts
     public class Radar : MonoBehaviour
     {
         [SerializeField]
-        protected ParticleSystem radarParticles;
+        protected float targetDistanceFromPlayer = 130.0f;
 
-        protected Transform particleEmitterTransform;
+        [SerializeField]
+        protected float minimumDistance = 20.0f;
+
+        protected Camera mainCamera;
         protected Transform playerTransform;
 
-        private float desiredDistanceFromPlayer;
+        
 
         void Start()
         {
-            particleEmitterTransform = radarParticles.GetComponent<Transform>();
+            mainCamera = Camera.main;
             playerTransform = GameManager.instance.Player.GetComponent<Transform>();
-            desiredDistanceFromPlayer = particleEmitterTransform.position.x - playerTransform.position.x;
         }
 
         // Update is called once per frame
-        void FixedUpdate()
+        void Update()
         {
-            float distanceFromPlayer = particleEmitterTransform.position.x - playerTransform.position.x;
-            if (distanceFromPlayer < desiredDistanceFromPlayer)
+            float distanceFromPlayer = transform.position.x - playerTransform.position.x;
+            if (distanceFromPlayer < minimumDistance)
             {
-                particleEmitterTransform.transform.Translate(new Vector3(playerTransform.position.x + desiredDistanceFromPlayer
-                    , particleEmitterTransform.position.y
-                    , particleEmitterTransform.position.z));
-            }
+                Vector3 newParticleEmitterPosition = new Vector3(playerTransform.position.x + targetDistanceFromPlayer
+                    , transform.position.y
+                    , transform.position.z);
 
+                GameObject newRadarParticles = Instantiate(gameObject, newParticleEmitterPosition, Quaternion.identity) as GameObject;
+                GameObject.Destroy(gameObject);
+            }
         }
     }
 }
