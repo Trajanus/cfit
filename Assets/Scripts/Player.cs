@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using System.Timers;
 using UnityEngine;
 using UnityLibrary;
 
@@ -6,8 +8,17 @@ public class Player : MonoBehaviour
 {
     public int speed;
     public Sprite explosion;
+    public double millisecondsUntilDetectionReset;
 
     private Rigidbody2D rb2d;
+    private int numParticleStrikes = 0;
+    private System.Timers.Timer particleStrikeResetTimer;
+
+    private void Awake()
+    {
+        particleStrikeResetTimer = new System.Timers.Timer(millisecondsUntilDetectionReset) { AutoReset = true };
+        particleStrikeResetTimer.Elapsed += ParticleStrikeResetElapsed;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -58,5 +69,20 @@ public class Player : MonoBehaviour
     {
         SpriteRenderer playerRender = GetComponent<SpriteRenderer>();
         playerRender.sprite = explosion;
+    }
+
+    void OnParticleCollision(GameObject other)
+    {
+        if (particleStrikeResetTimer != null && !particleStrikeResetTimer.Enabled)
+        {
+            particleStrikeResetTimer.Start();
+        }
+        numParticleStrikes++;
+        Debug.Log($"Strikes: {numParticleStrikes}");
+    }
+
+    private void ParticleStrikeResetElapsed(object sender, ElapsedEventArgs eventArgs)
+    {
+            numParticleStrikes = 0;
     }
 }

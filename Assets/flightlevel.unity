@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   explosion: {fileID: 21300000, guid: b70f2bfb945870c43b91f717adbb09de, type: 3}
+  millisecondsUntilDetectionReset: 5000
 --- !u!212 &1017208802
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -435,6 +436,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RadarParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 2901488555675842750, guid: 80e69abb3272fc748af9d7b5923ac9b7,
+        type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2901488555675842751, guid: 80e69abb3272fc748af9d7b5923ac9b7,
         type: 3}
